@@ -1,6 +1,7 @@
 const booksApp = {};
 
-booksApp.init = function(){
+booksApp.init = function(){      
+  booksApp.getBestSellers()
     $('#submit').on('click', function(){
     let search = $('#search').val()
     $('.results').children().remove()
@@ -13,6 +14,29 @@ booksApp.init = function(){
     })
   };
 
+booksApp.getBestSellers = function(){
+  var url = "https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json";
+  url += '?' + $.param({
+   'api-key': "4178cadedd7e4f00902aa3e48f89835e"
+  });
+  $.ajax({
+    url: url,
+    method: 'GET',
+  }).done(function(result) {
+   booksApp.displayBestSellers(result)
+
+  }).fail(function(err) {
+    throw err;
+  });
+}
+
+booksApp.displayBestSellers = function(best){
+  best.results.forEach(function(element, i){
+    $('').append(
+      '<div class="bookTitle" id = "'+i+'">'+element.title+'</div>'
+    )
+  })
+}
 
 booksApp.booksSearch = function(search){
     $.ajax({
@@ -39,8 +63,8 @@ booksApp.booksDetailLookup = function(data){
       )
       if(data.items[bookNumber].volumeInfo.description){
         $('.results').append(
-          '<div class="description">'+data.items[bookNumber].volumeInfo.authors+'</div>',
-          '<div class="description">'+data.items[bookNumber].volumeInfo.publisher+'</div>',
+          '<div class="author">Author: '+data.items[bookNumber].volumeInfo.authors+'</div>',
+          '<div class="publisher">Publisher: '+data.items[bookNumber].volumeInfo.publisher+'</div>',
           '<div class="description">'+data.items[bookNumber].volumeInfo.description+'</div>',
           '<img class="thumbnail-images" src="'+data.items[bookNumber].volumeInfo.imageLinks.thumbnail+'">'
            )

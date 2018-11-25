@@ -8,11 +8,13 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
 
-
 </head>
 <body>
     <header>
-        <h1>Love Read</h1>
+        <div class="search">
+                <input type="search" name="search" id="search" placeholder="Search">
+                <button id="submit">Submit</button>
+            </div>
     </header>
     <aside class="wrapper"> 
         <div class="categories">
@@ -38,12 +40,13 @@
             <button class="book-category" id="trilogies">Trilogies</button>
         </div>
     </aside>
-    <div class="search">
-        <input type="search" name="search" id="search" placeholder="Search">
-        <button id="submit">Submit</button>
-    </div>
 
-    <div class="results"></div>
+    <div class="results">
+        <h3>Click to</h3>
+    </div>
+    <div class="images">
+      <img src="../Photos/tulips-drink-and-books_4460x4460.jpg" alt="tulips and books">
+    </div>
 
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="books.js"></script>
