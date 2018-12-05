@@ -2,6 +2,9 @@ const booksApp = {};
 
 booksApp.init = function(){      
   booksApp.getBestSellers()
+    $('.header').on('click', function(){
+      booksApp.getBestSellers()
+    })
     $('#submit').on('click', function(){
     let search = $('#search').val()
     $('.results').children().remove()
@@ -31,12 +34,44 @@ booksApp.getBestSellers = function(){
 }
 
 booksApp.displayBestSellers = function(best){
+  $('.results').text('')
   best.results.forEach(function(element, i){
-    $('').append(
-      '<div class="bookTitle" id = "'+i+'">'+element.title+'</div>'
-    )
+   if (element.isbns[0]) {
+     $('.results').append(
+       '<div class="bestResults" id='+element.isbns[0].isbn10+'><div>'+element.title+'</div></div>')
+   }
+  })
+  $('.bestResults').on('click', function(){
+    let isbnNumber = $(this).attr("id")
+    booksApp.displayTopBooks(isbnNumber)
   })
 }
+
+booksApp.displayTopBooks = function(isbns){
+  $.ajax({
+    url: 'https://www.googleapis.com/books/v1/volumes?q=isbn:'+ isbns,
+    method: 'GET'
+  })
+  .done(function(data){
+    if(data.items){
+      $('.results').text('')
+      $('.results').append(
+        '<div>'+data.items[0].volumeInfo.title+'</div>',
+        '<div class="author">Author: '+data.items[0].volumeInfo.authors+'</div>',
+        '<div class="publisher">Publisher: '+data.items[0].volumeInfo.publisher+'</div>',
+        '<div class="description">'+data.items[0].volumeInfo.description+'</div>',
+        '<img class="thumbnail-images" src="'+data.items[0].volumeInfo.imageLinks.thumbnail+'">')
+    } else {
+      $('.results').text(
+        'Book information is not available.'
+         )
+       $('.results').append( 
+     '<a class="buyLink" href="'+data.items[0].volumeInfo.previewLink+'">Buy Here</a>',
+     '<a class="ebooks" href="'+data.items[0].volumeInfo.canonicalVolumeLink+'">Ebooks for Android</a>'
+         )
+       }
+  })
+};
 
 booksApp.booksSearch = function(search){
     $.ajax({
