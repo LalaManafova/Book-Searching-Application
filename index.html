@@ -6,49 +6,62 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Books</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/ico" href="assets/book.png" sizes="16x16 40x40">
     <link href="https://fonts.googleapis.com/css?family=Acme|Mukta" rel="stylesheet">
 
 </head>
 <body>
     <header class="header"></header>
-    <aside class="wrapper"> 
-        <div class="categories">
-            <button class="book-category" id="action">Action</button>
-            <button class="book-category" id="adventure">Adventure</button>
-            <button class="book-category" id="autobiographies">Autobiographies</button>
-            <button class="book-category" id="anthologies">Anthologies</button>
-            <button class="book-category" id="biographies">Biographies</button>
-            <button class="book-category" id="childrens">Children's</button>
-            <button class="book-category" id="comics">Comics</button>
-            <button class="book-category" id="cookbooks">Cookbooks</button>
-            <button class="book-category" id="drama">Drama</button>
-            <button class="book-category" id="dictionaries">Dictionaries</button>
-            <button class="book-category" id="encyclopedia">Encyclopedia</button>
-            <button class="book-category" id="fantasy">Fantasy</button>
-            <button class="book-category" id="fairyTale">Fairy Tale</button>
-            <button class="book-category" id="history">History</button>
-            <button class="book-category" id="horror">Horror</button>
-            <button class="book-category" id="mystery">Mystery</button>
-            <button class="book-category" id="poetry">Poetry</button>
-            <button class="book-category" id="romance">Romance</button>
-            <button class="book-category" id="science">Science</button>
-            <button class="book-category" id="trilogies">Trilogies</button>
-        </div>
-    </aside>
+
     <section>
-            <div class="search ">
-              <label for="search"></label>
-              <input type="search" name="search" id="search" placeholder="Search">
-              <button class="submit" id="submit"></button>
+        <div class="side-bar-wrapper">
+                <aside class="side-bar"> 
+                    <div class="categories">
+                        <button class="book-category" id="action">Action</button>
+                        <button class="book-category" id="adventure">Adventure</button>
+                        <button class="book-category" id="autobiographies">Autobiographies</button>
+                        <button class="book-category" id="anthologies">Anthologies</button>
+                        <button class="book-category" id="biographies">Biographies</button>
+                        <button class="book-category" id="childrens">Children's</button>
+                        <button class="book-category" id="comics">Comics</button>
+                        <button class="book-category" id="cookbooks">Cookbooks</button>
+                        <button class="book-category" id="drama">Drama</button>
+                        <button class="book-category" id="dictionaries">Dictionaries</button>
+                        <button class="book-category" id="encyclopedia">Encyclopedia</button>
+                        <button class="book-category" id="fantasy">Fantasy</button>
+                        <button class="book-category" id="history">History</button>
+                        <button class="book-category" id="horror">Horror</button>
+                        <button class="book-category" id="mystery">Mystery</button>
+                        <button class="book-category" id="poetry">Poetry</button>
+                        <button class="book-category" id="romance">Romance</button>
+                        <button class="book-category" id="science">Science</button>
+                        <button class="book-category" id="trilogies">Trilogies</button>
+                    </div>
+                </aside>
+                <div class="sidebar-button-wrapper">
+                    <button class="sidebar-button">Categories</button>
+                </div>
+                <div class="sidebar-button-wrapper-responsive">
+                        <button class="sidebar-button-responsive">Categories</button>
+                </div>
             </div>
-            <h3>Search out catalogue of 1000s of books and study materials.</h3>
+        <div class="search-container">
+            <div class="search ">
+                <label for="search"></label>
+                <input type="search" name="search" id="search" placeholder="Search">
+                <button class="submit" id="submit"></button>
+            </div>
+        </div>
+            <div class="search-hint">
+                <h3>Search out catalogue of 1000s of books and study materials.</h3>
+            </div>
             <h2>Top-10 Best Sellers</h2>
           </section>
 
     <div class="results"></div>
         
     <footer>
-        <p>Copyright 2018 📙</p>
+        <p>Copyright 2019 📙</p>
     </footer>
 
 

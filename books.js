@@ -1,6 +1,7 @@
 const booksApp = {};
 
-booksApp.init = function(){      
+booksApp.init = function(){  
+  booksApp.animateSidebar()
   booksApp.getBestSellers()
     $('.header').on('click', function(){
       booksApp.getBestSellers()
@@ -17,10 +18,24 @@ booksApp.init = function(){
     })
   };
 
+booksApp.animateSidebar = function(){
+  $('.sidebar-button').on('click', function(){
+    $('.side-bar').toggleClass('open')
+  })
+  $('.sidebar-button-responsive').on('click', function(){
+    $('.side-bar').toggleClass('open-responsive')
+  })
+  $('.book-category').on('click', function(){
+    $('.side-bar').removeClass('open')
+    $('.side-bar').removeClass('open-responsive')    
+  })
+  
+}
+
 booksApp.getBestSellers = function(){
   var url = "https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json";
   url += '?' + $.param({
-   'api-key': "4178cadedd7e4f00902aa3e48f89835e"
+   'api-key': "wMewURm1l81vgT33BYIy2WUBD2jzoFe7"
   });
   $.ajax({
     url: url,
@@ -109,7 +124,6 @@ booksApp.booksDetailLookup = function(data){
            )
       }
     
-
     $('.results').append( 
      '<a class="buyLink" href="'+data.items[bookNumber].volumeInfo.previewLink+'">Buy Here</a>',
      '<a class="ebooks" href="'+data.items[bookNumber].volumeInfo.canonicalVolumeLink+'">Ebooks for Android</a>'
@@ -117,9 +131,6 @@ booksApp.booksDetailLookup = function(data){
   })
   
 }
-
-
-
 
 $(function(){
     booksApp.init();
